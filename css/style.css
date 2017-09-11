@@ -1,0 +1,28 @@
+body {
+    background-color: darkgreen;
+}
+.mainBackground {
+    display: flex;
+    background-color:white;
+    
+    justify-content: space-between;
+    flex-direction: row;
+}
+.firstrow{
+    flex-grow: 2;
+}
+.middlerow{
+    align-content:center;
+    flex-grow: 4;
+    background-color: red;
+}
+.lastrow{
+    flex-grow:2;
+}
+.centerTile{
+    background-color:blue;
+}
+.gameboard{
+    display: flex;
+    justify-content: center;
+}
