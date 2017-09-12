@@ -4,7 +4,7 @@ body {
 .mainBackground {
     display: flex;
     background-color:white;
-    
+    align-content: center;
     justify-content: space-between;
     flex-direction: row;
 }
@@ -14,15 +14,45 @@ body {
 .middlerow{
     align-content:center;
     flex-grow: 4;
-    background-color: red;
 }
 .lastrow{
     flex-grow:2;
 }
+.empty{
+    background-color: transparent;
+}
 .centerTile{
-    background-color:blue;
+    background-color: goldenrod;
 }
 .gameboard{
     display: flex;
     justify-content: center;
+    justify-content: space-around;
+}
+.cleartile{
+    /*clear tile for when something is not clicked*/
+    width: 150px;
+    height: 150px;
+    padding: 0px;
+    margin: 0px;
+    background-color: white;
+    border-radius: 50%;
+}
+.playerRedTile{
+    /*tile that is player ones color*/
+    width: 150px;
+    height: 150px;
+    padding: 0px;
+    margin: 0px;
+    background-color: red;
+    border-radius: 50%;
+}
+.playerBlackTile{
+    /*tile that is player twos color*/
+    width: 150px;
+    height: 150px;
+    padding: 0px;
+    margin: 0px;
+    background-color: black;
+    border-radius: 50%;
 }
