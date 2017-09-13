@@ -24,6 +24,7 @@ let player2NameAssign = function(){
 //this will check to see if there is any open space under it
 let openSpace = function(){
 // need to pull the rows from both arrays and loop through and make sure there are no empty places bellow it
+// 
 };
 //this will check for a winner up or down
 let verticalWin = function(){
