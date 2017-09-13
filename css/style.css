@@ -56,3 +56,25 @@ body {
     background-color: black;
     border-radius: 50%;
 }
+.player1InfoTable{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+.player2InfoTable{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+.player2ColorDisplay{
+    width: 75px;
+    height: 75px;
+    background-color: black;
+    border-radius: 50%;
+}
+.player1ColorDisplay{
+    width: 75px;
+    height: 75px;
+    background-color: red;
+    border-radius: 50%;
+}
