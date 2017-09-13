@@ -19,13 +19,16 @@ let player1NameAssign = function(){
 let player2NameAssign = function(){
     player2Name = prompt("Player 2 Name?", "Player 2");
     player2Name.replace("player2Name");
-    return player2Name;
+    
+};
+//this will check for a winner up or down
+let verticalWin = function(){
+//needs to use .length so it cycles through the entire array
 };
 //this assigns the name value entered on initial promt to both the name and the moves tracker
 player1NameAssign();
 $(".player1NameDisplay").text(player1Name);
 $(".nameTablePlayer1MoveTracker").text(player1Name);
-//$(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
 player2NameAssign();
 $(".player2NameDisplay").text(player2Name)
 $(".nameTablePlayer2MoveTracker").text(player2Name)
@@ -35,13 +38,15 @@ let currentPlayer = function(){
     if (player === "red"){
             //identifies the row the piece was clicked by breaking the id into an array and selecting the first part of the string
             let rowRef = this.id[0];
-            //intRowRef = Number(rowRef);
+            intRowRef = Number(rowRef);
             console.log(' Red row is:',this.id[0]);
             //indentifies the col the piece was clicked by breaking the id into an array and selecting the second part of the string
             console.log(' Red col is:',this.id[1]);
             let colRef = this.id[1];
-            //intColRef = Number(colRef)
-            //redGameboardArray = [intRowRef,intColRef];
+            intColRef = Number(colRef)
+            let innerRedGameboardArray = [intRowRef,intColRef]
+            redGameboardArray.push(innerRedGameboardArray)
+            //redGameboardArray = redGameboardArray + [intRowRef,intColRef];
             $(this).removeClass();
             $(this).addClass("playerRedTile");
             intRedMoveTracker = intRedMoveTracker + 1;
@@ -62,7 +67,8 @@ let currentPlayer = function(){
             console.log('col is:',this.id[1]);
             let colRef = this.id[1];
             intColRef = Number(colRef)
-         blackGameboardArray = blackGameboardArray + [intRowRef,intColRef];
+            let innerBlackGameboardArray = [intRowRef,intColRef]
+            blackGameboardArray.push(innerBlackGameboardArray)
             $(this).removeClass();
             $(this).addClass("playerBlackTile");
             intBlackMoveTracker = intBlackMoveTracker + 1;
@@ -75,8 +81,7 @@ let currentPlayer = function(){
         
     }
     //this is where the color will switch and store the move to the player tracker and the winchecker array using if else to change the state
-    
-   return player; 
+     
 };
 $('.cleartile').on("click",currentPlayer);
 //debugger
