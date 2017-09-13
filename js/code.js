@@ -25,7 +25,7 @@ let player2NameAssign = function(){
 player1NameAssign();
 $(".player1NameDisplay").text(player1Name);
 $(".nameTablePlayer1MoveTracker").text(player1Name);
-$(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
+//$(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
 player2NameAssign();
 $(".player2NameDisplay").text(player2Name)
 $(".nameTablePlayer2MoveTracker").text(player2Name)
@@ -46,19 +46,12 @@ let currentPlayer = function(){
             $(this).addClass("playerRedTile");
             intRedMoveTracker = intRedMoveTracker + 1;
             console.log("Red Turn Complete");
-            // return redGameboardArray;
             //updates the ammount of moves red player has made
-            // return intRedMoveTracker;
            //redMoveTracker = intRedMoveTracker.toString();
-           // return redMoveTracker;
            player = "black";
-          test = "works";
+           $(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
           return test;
-           //currentPlayer();
-           
-         
-            
-    } 
+   } 
     else {
         
             //identifies the row the piece was clicked by breaking the id into an array and selecting the first part of the string
@@ -69,13 +62,14 @@ let currentPlayer = function(){
             console.log('col is:',this.id[1]);
             let colRef = this.id[1];
             intColRef = Number(colRef)
-         blackGameboardArray = [intRowRef,intColRef];
+         blackGameboardArray = blackGameboardArray + [intRowRef,intColRef];
             $(this).removeClass();
             $(this).addClass("playerBlackTile");
             intBlackMoveTracker = intBlackMoveTracker + 1;
             console.log("Black Turn Complete");
             //updates the ammount of moves black player has made
             player = "red";
+            $(".movesTablePlayer2MoveTracker").html(intBlackMoveTracker);
             return player;
 
         

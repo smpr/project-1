@@ -1,2 +1,2 @@
 # project-1
-started by using the flex model to get the layout of the board going. broke it into a table inside of the center tile of a larger table. then used jquerry to select the tile and change the class to represent where the user was clicking
+started by using the flex model to get the layout of the board going. broke it into a table inside of the center tile of a larger table. then used jquerry to select the tile and change the class to represent where the user was clicking. I then setup a player var later and created a click event that made it swap between two conditions. This also stored the moved each player made, updated the arrays, and changed the class of each tile clicked so that the css style could take over
