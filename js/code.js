@@ -1,13 +1,13 @@
 let player = "red";
+let testArray = [[]];
+let gameLocationArray = [[]];
 //player 1 vars
 let player1Name = "Player 1";
-let redGameboardArray = [[]];
 let intRedMoveTracker = 0;
 let redMoveTracker = "";
 let test = "doesnt work";
 // player 2 vars
 let player2Name = "Player 2";
-let blackGameboardArray = [[]];
 let blackMoveTracker = 0;
 let intBlackMoveTracker = 0;
 //Prompt to ask and reassign player one and two names
@@ -27,8 +27,17 @@ let openSpace = function(){
 // 
 };
 //this will check for a winner up or down
+
 let verticalWin = function(){
 //needs to use .length so it cycles through the entire array
+
+for(let i = 0; i < gameLocationArray.length; i++) {
+        
+        //console.log(redVert[j])
+        //console.log("redVert[" + i + "][" + j + "] = " + redGameboardArray[j]);
+    
+}
+
 };
 //this assigns the name value entered on initial promt to both the name and the moves tracker
 player1NameAssign();
@@ -42,46 +51,74 @@ $(".nameTablePlayer2MoveTracker").text(player2Name)
 let currentPlayer = function(){
     if (player === "red"){
             //identifies the row the piece was clicked by breaking the id into an array and selecting the first part of the string
+            let colRef = this.id[1];
             let rowRef = this.id[0];
-            intRowRef = Number(rowRef);
+            
+            let intRowRef = Number(rowRef);
             console.log(' Red row is:',this.id[0]);
             //indentifies the col the piece was clicked by breaking the id into an array and selecting the second part of the string
             console.log(' Red col is:',this.id[1]);
-            let colRef = this.id[1];
-            intColRef = Number(colRef)
-            let innerRedGameboardArray = [intRowRef,intColRef]
-            redGameboardArray.push(innerRedGameboardArray)
-            //redGameboardArray = redGameboardArray + [intRowRef,intColRef];
+            let intColRef = Number(colRef)
+            let thisCord = [intRowRef, intColRef]
+            gameLocationArray.push(player,thisCord);
+            //let innerRedGameboardArray = [intRowRef,intColRef]
+            //redGameboardArray.push(innerRedGameboardArray)
+            //needs to be deleted after games array is fixedredGameboardArray = redGameboardArray + [intRowRef,intColRef];
             $(this).removeClass();
             $(this).addClass("playerRedTile");
+
             intRedMoveTracker = intRedMoveTracker + 1;
             console.log("Red Turn Complete");
             //updates the ammount of moves red player has made
            //redMoveTracker = intRedMoveTracker.toString();
            player = "black";
            $(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
-          return test;
+           verticalWin();
+          
    } 
     else {
-        
-            //identifies the row the piece was clicked by breaking the id into an array and selecting the first part of the string
-            let rowRef = this.id[0];
-            intRowRef = Number(rowRef);
-            console.log('row is:',this.id[0]);
-            //indentifies the col the piece was clicked by breaking the id into an array and selecting the second part of the string
-            console.log('col is:',this.id[1]);
-            let colRef = this.id[1];
-            intColRef = Number(colRef)
-            let innerBlackGameboardArray = [intRowRef,intColRef]
-            blackGameboardArray.push(innerBlackGameboardArray)
-            $(this).removeClass();
-            $(this).addClass("playerBlackTile");
-            intBlackMoveTracker = intBlackMoveTracker + 1;
-            console.log("Black Turn Complete");
-            //updates the ammount of moves black player has made
-            player = "red";
-            $(".movesTablePlayer2MoveTracker").html(intBlackMoveTracker);
-            return player;
+         //identifies the row the piece was clicked by breaking the id into an array and selecting the first part of the string
+         let colRef = this.id[1];
+         let rowRef = this.id[0];
+         
+         let intRowRef = Number(rowRef);
+         console.log(' Red row is:',this.id[0]);
+         //indentifies the col the piece was clicked by breaking the id into an array and selecting the second part of the string
+         console.log(' Red col is:',this.id[1]);
+         let intColRef = Number(colRef)
+         let thisCord = [intRowRef, intColRef]
+         gameLocationArray.push(player,thisCord);
+         //let innerRedGameboardArray = [intRowRef,intColRef]
+         //redGameboardArray.push(innerRedGameboardArray)
+         //needs to be deleted after games array is fixedredGameboardArray = redGameboardArray + [intRowRef,intColRef];
+         $(this).removeClass();
+         $(this).addClass("playerBlackTile");
+
+         intBlackMoveTracker = intBlackMoveTracker + 1;
+         console.log("Black Turn Complete");
+         //updates the ammount of moves red player has made
+        //redMoveTracker = intRedMoveTracker.toString();
+        player = "red";
+        $(".movesTablePlayer2MoveTracker").html(intBlackMoveTracker);
+        verticalWin();
+            ////identifies the row the piece was clicked by breaking the id into an array and selecting the first part of the string
+            //let rowRef = this.id[0];
+            //intRowRef = Number(rowRef);
+            //console.log('row is:',this.id[0]);
+            ////indentifies the col the piece was clicked by breaking the id into an array and selecting the second part of the string
+            //console.log('col is:',this.id[1]);
+            //let colRef = this.id[1];
+            //intColRef = Number(colRef)
+            //let innerBlackGameboardArray = [intRowRef,intColRef]
+            //blackGameboardArray.push(innerBlackGameboardArray)
+            //$(this).removeClass();
+            //$(this).addClass("playerBlackTile");
+            //intBlackMoveTracker = intBlackMoveTracker + 1;
+            //console.log("Black Turn Complete");
+            ////updates the ammount of moves black player has made
+            //player = "red";
+            //$(".movesTablePlayer2MoveTracker").html(intBlackMoveTracker);
+            //return player;
 
         
     }
@@ -90,4 +127,5 @@ let currentPlayer = function(){
 };
 $('.cleartile').on("click",currentPlayer);
 //debugger
+
  
