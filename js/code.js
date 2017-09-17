@@ -18,10 +18,14 @@ let testArray = [[]];
 let player1Name = "Player 1";
 let intRedMoveTracker = 0;
 let redMoveTracker = "";
+let intRedScoreBoard = 0;
+let redScoreBoard = "";
 // player 2 vars
 let player2Name = "Player 2";
 let blackMoveTracker = 0;
 let intBlackMoveTracker = 0;
+let intBlackScoreBoard = 0;
+let blackScoreBoard = "";
 //Prompt to ask and reassign player one and two names
 
 let player1NameAssign = function(){
@@ -52,9 +56,8 @@ let openSpace = function(){
         console.log('this is unasssigned')
 
     }else{
-        console.log("this is already assigned...asshat")
+        console.log("this is already assigned...")
     }
-// need to pull the rows from the array and loop through and make sure there are no empty places bellow it
  
 };
 //win conditions
@@ -87,7 +90,7 @@ let winLeft = function(player,rowRef,colRef){
         return false;
     }
 
-    if(gameLocationArray[rowRef][colRef] === player && gameLocationArray[rowRef][colRef-1]=== player && gameLocationArray[rowRef][colRef-2]=== player && gameLocationArray[rowRef][colRef-3]=== player){
+    if(gameLocationArray[rowRef][colRef] === player && gameLocationArray[rowRef][colRef-1] === player && gameLocationArray[rowRef][colRef-2] === player && gameLocationArray[rowRef][colRef-3] === player){
     return true;
     }
     else {
@@ -105,18 +108,18 @@ let winUpRight = function(player,rowRed,colRef){
         return false;
     }
 }
-let winDownLeft = function(player,rowRed,colRef){
+let winDownLeft = function(player,rowRef,colRef){
     if(rowRef < 3 || colRef < 3){
         return false;
     }
-    if(gameLocationArray[rowRef][colRef] === player && gameLocationArray[rowRef-1][colRed-1]=== player && gameLocationArray[rowRef -2][colRef-2]=== player && gameLocationArray[rowRef-3][colRef-3]=== player){
+    if(gameLocationArray[rowRef][colRef] === player && gameLocationArray[rowRef-1][colRef-1]=== player && gameLocationArray[rowRef -2][colRef-2]=== player && gameLocationArray[rowRef-3][colRef-3]=== player){
         return true;
     }
     else {
         return false;
     }
 }
-let winUpLeft = function(player,rowRed,colRef){
+let winUpLeft = function(player,rowRef,colRef){
     if(rowRef > 3 || colRef < 3){
         return false;
     }
@@ -127,7 +130,7 @@ let winUpLeft = function(player,rowRed,colRef){
     }
 
 }
-let winDownRight = function(player,rowRed,colRef){
+let winDownRight = function(player,rowRef,colRef){
     if(rowRef < 3 || colRef > 3){
         return false;
     }
@@ -146,7 +149,6 @@ $(".nameTablePlayer1MoveTracker").text(player1Name);
 player2NameAssign();
 $(".player2NameDisplay").text(player2Name)
 $(".nameTablePlayer2MoveTracker").text(player2Name)
-
 //this is where the color will switch and store the move to the player tracker and the winchecker array using if else to change the state
 let currentPlayer = function(rowRef,colRef){
 
@@ -167,16 +169,26 @@ let currentPlayer = function(rowRef,colRef){
             intRedMoveTracker = intRedMoveTracker + 1;
             console.log("Red Turn Complete");
             //updates the ammount of moves red player has made
-           player = "black";
+          
            $(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
            console.log(gameLocationArray)
-          
+          if(winDown(player,rowRef,colRef) || winDownLeft(player,rowRef,colRef) || winRight(player,rowRef,colRef) || winLeft(player,rowRef,colRef)|| winUpLeft(player,rowRef,colRef) || winUpLeft(player,rowRef,colRef) || winDownRight(player,rowRef,colRef)){
+              alert("You Win!")
+            intRedScoreBoard = intRedScoreBoard + 1;
+            $('player1WinsTracker').html(intRedScoreBoard);
+          }
+           player = "black";
    } 
     else {
          $("#"+rowRef+colRef).addClass("playerBlackTile");
 
         intBlackMoveTracker = intBlackMoveTracker + 1;
          console.log("Black Turn Complete");
+         if(winDown(player,rowRef,colRef) || winDownLeft(player,rowRef,colRef) || winRight(player,rowRef,colRef) || winLeft(player,rowRef,colRef)|| winUpLeft(player,rowRef,colRef) || winUpLeft(player,rowRef,colRef) || winDownRight(player,rowRef,colRef)){
+            alert("You Win!")
+            intBlackScoreBoard = intBlackScoreBoard +1;
+            $('player2WinsTracker').html(intBlackScoreBoard);
+        } 
          //updates the ammount of moves red player has made
         player = "red";
         $(".movesTablePlayer2MoveTracker").html(intBlackMoveTracker);
