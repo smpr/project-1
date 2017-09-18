@@ -19,9 +19,10 @@ let gameReset= function(){
     intBlackMoveTracker = 0;
     $(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
     $(".movesTablePlayer2MoveTracker").html(intBlackMoveTracker);
-
-    $(".playerBlackTile").addClass("cleartile");
-    $(".playerRedTile").addClass("cleartile");
+    $("playerBlackTile").removeClass()
+    $("playerBlackTile").removeClass()
+    $("playerBlackTile").addClass("cleartile");
+    $("playerRedTile").addClass("cleartile");
 }
 //player 1 vars
 let player1Name = "Player 1";
@@ -182,9 +183,17 @@ let currentPlayer = function(rowRef,colRef){
            $(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
            console.log(gameLocationArray)
           if(winDown(player,rowRef,colRef) || winDownLeft(player,rowRef,colRef) || winRight(player,rowRef,colRef) || winLeft(player,rowRef,colRef)|| winUpLeft(player,rowRef,colRef) || winUpLeft(player,rowRef,colRef) || winDownRight(player,rowRef,colRef)){
-              alert("You Win!")
-            intRedScoreBoard = intRedScoreBoard + 1;
-            $('player1WinsTracker').html(intRedScoreBoard);
+            var r = confirm("Play Again?");
+            if (r == true) {
+                intRedScoreBoard = intRedScoreBoard + 1;
+                $('player1WinsTracker').html(intRedScoreBoard);
+                gameReset();
+                txt = "Enjoy!";
+            } else {
+                txt = "Come Again!";
+            }
+            
+            
           }
            player = "black";
    } 
@@ -194,9 +203,15 @@ let currentPlayer = function(rowRef,colRef){
         intBlackMoveTracker = intBlackMoveTracker + 1;
          console.log("Black Turn Complete");
          if(winDown(player,rowRef,colRef) || winDownLeft(player,rowRef,colRef) || winRight(player,rowRef,colRef) || winLeft(player,rowRef,colRef)|| winUpLeft(player,rowRef,colRef) || winUpLeft(player,rowRef,colRef) || winDownRight(player,rowRef,colRef)){
-            alert("You Win!")
-            intBlackScoreBoard = intBlackScoreBoard +1;
-            $('player2WinsTracker').html(intBlackScoreBoard);
+            var r = confirm("Play Again?");
+            if (r == true) {
+                intRedScoreBoard = intRedScoreBoard + 1;
+                $('player1WinsTracker').html(intRedScoreBoard);
+                gameReset();
+                txt = "Enjoy!";
+            } else {
+                txt = "Come Again!";
+            }
         } 
          //updates the ammount of moves red player has made
         player = "red";
