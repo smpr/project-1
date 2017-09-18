@@ -13,7 +13,16 @@ let setupGameboard = function(){
 setupGameboard();
 let player = "red";
 let testArray = [[]];
+let gameReset= function(){
+    setupGameboard();
+    intRedMoveTracker = 0;
+    intBlackMoveTracker = 0;
+    $(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
+    $(".movesTablePlayer2MoveTracker").html(intBlackMoveTracker);
 
+    $(".playerBlackTile").addClass("cleartile");
+    $(".playerRedTile").addClass("cleartile");
+}
 //player 1 vars
 let player1Name = "Player 1";
 let intRedMoveTracker = 0;
