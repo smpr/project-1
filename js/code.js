@@ -19,10 +19,10 @@ let gameReset= function(){
     intBlackMoveTracker = 0;
     $(".movesTablePlayer1MoveTracker").html(intRedMoveTracker);
     $(".movesTablePlayer2MoveTracker").html(intBlackMoveTracker);
-    $("playerBlackTile").removeClass()
-    $("playerBlackTile").removeClass()
-    $("playerBlackTile").addClass("cleartile");
-    $("playerRedTile").addClass("cleartile");
+    $(".").removeClass()
+    //$("playerBlackTile").removeClass()
+    $(".").addClass("cleartile");
+    //$("playerRedTile").addClass("cleartile");
 }
 //player 1 vars
 let player1Name = "Player 1";
